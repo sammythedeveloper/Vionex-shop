@@ -1,6 +1,6 @@
-# 🛒 Vionex Shop
+# 🛒 Nova Shop
 
-**Vionex Shop** is a modern, responsive **e-commerce web application** built with **React** and **Firebase**, designed to deliver a seamless and secure online shopping experience.  
+**Nova Shop** is a modern, responsive **e-commerce web application** built with **React** and **Firebase**, designed to deliver a seamless and secure online shopping experience.  
 
 Users can browse a wide range of products, view detailed information (including images, prices, and ratings), add items to their shopping cart, and complete secure payments — all within a clean, mobile-friendly interface.
 
@@ -25,6 +25,7 @@ Users can browse a wide range of products, view detailed information (including 
 | **Frontend** | React, React Router, Context API, CSS / Tailwind |
 | **Backend / Database** | Firebase, Firestore |
 | **Authentication** | Firebase Auth |
+| **Paymentcintegrated** | Stripe API |
 | **Deployment** | Firebase Hosting / Vercel |
 | **Version Control** | Git & GitHub |
 
