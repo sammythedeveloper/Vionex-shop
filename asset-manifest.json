@@ -1,13 +1,20 @@
 {
   "files": {
-    "main.css": "/Nova-shop/static/css/main.a664d6c6.css",
-    "main.js": "/Nova-shop/static/js/main.a9948eee.js",
+    "main.css": "/Nova-shop/static/css/main.7ceb5084.css",
+    "main.js": "/Nova-shop/static/js/main.43770689.js",
+    "static/media/Gemini.png": "/Nova-shop/static/media/Gemini.502b646ae7ebb814634f.png",
     "static/media/0.jpg": "/Nova-shop/static/media/0.967fd956b58358809664.jpg",
+    "static/media/ecom4.jpg": "/Nova-shop/static/media/ecom4.f920982fca6ed78c3741.jpg",
+    "static/media/ecom3.jpg": "/Nova-shop/static/media/ecom3.645b0621eaf13b0faa56.jpg",
+    "static/media/ecom.jpg": "/Nova-shop/static/media/ecom.4f6acddcdfe04a42076a.jpg",
+    "static/media/ecom2.jpg": "/Nova-shop/static/media/ecom2.b2523f345e06bde7fb6f.jpg",
     "static/media/8.jpg": "/Nova-shop/static/media/8.862ef7cd7a3e4356dcc9.jpg",
+    "static/media/ecom6.jpg": "/Nova-shop/static/media/ecom6.28c78aa8679e3747003c.jpg",
     "static/media/3.jpg": "/Nova-shop/static/media/3.eb5ef1db9d70cc3a77b5.jpg",
     "static/media/7.jpg": "/Nova-shop/static/media/7.3136c98ec4532fd91e38.jpg",
     "static/media/4.jpg": "/Nova-shop/static/media/4.d50baf8f6ed0e6081f87.jpg",
     "static/media/1.jpg": "/Nova-shop/static/media/1.55677601568dbfeaf7cc.jpg",
+    "static/media/ecom5.jpg": "/Nova-shop/static/media/ecom5.8c406548d51eaf6e3fae.jpg",
     "static/media/6.jpg": "/Nova-shop/static/media/6.b7cf7f7e5716a74a0a6d.jpg",
     "static/media/2.jpg": "/Nova-shop/static/media/2.497c5299b8539deaf5a0.jpg",
     "static/media/onePlus.jpg": "/Nova-shop/static/media/onePlus.f1839d39d9401cbf08ca.jpg",
@@ -34,11 +41,11 @@
     "static/media/iphoneAir.jpg": "/Nova-shop/static/media/iphoneAir.cd13f2f09f80ab25b8c4.jpg",
     "static/media/apple.png": "/Nova-shop/static/media/apple.6c89baf7459e27fb12d2.png",
     "index.html": "/Nova-shop/index.html",
-    "main.a664d6c6.css.map": "/Nova-shop/static/css/main.a664d6c6.css.map",
-    "main.a9948eee.js.map": "/Nova-shop/static/js/main.a9948eee.js.map"
+    "main.7ceb5084.css.map": "/Nova-shop/static/css/main.7ceb5084.css.map",
+    "main.43770689.js.map": "/Nova-shop/static/js/main.43770689.js.map"
   },
   "entrypoints": [
-    "static/css/main.a664d6c6.css",
-    "static/js/main.a9948eee.js"
+    "static/css/main.7ceb5084.css",
+    "static/js/main.43770689.js"
   ]
 }
