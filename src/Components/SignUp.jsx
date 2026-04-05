@@ -1,35 +1,27 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./Firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { motion } from "framer-motion";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-function Login() {
+// Using a desk setup or similar asset for the signup page
+import SignupHero from "../images/accessories/ecom3.jpg";
+
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // <-- error state
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const signIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        if (userCredential) navigate("/");
-      })
-      .catch((error) => alert(error.message));
-  };
 
   const register = (e) => {
     e.preventDefault();
-    setError(""); // reset error
+    setError("");
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (userCredential) navigate("/");
       })
       .catch((err) => {
-        // err.message is like "Firebase: The email address is already in use by another account. (auth/email-already-in-use)"
         const cleanMessage = err.message
           .replace(/^Firebase: /, "")
           .replace(/\s\(.+\)$/, "");
@@ -38,99 +30,134 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row justify-between ">
-      {/* LEFT SECTION */}
-      <div className="flex-1 flex flex-col justify-center items-center bg-gradient-to-br from-red-500 to-red-700 text-white p-10">
-        <h1 className="text-5xl sm:text-7xl font-extrabold mb-6 tracking-tight">
-        Nova Shop
-        </h1>
-        <p className="text-lg sm:text-xl text-center max-w-md opacity-90">
-          Discover amazing deals, sleek designs, and shop with confidence.
-        </p>
-        {/* Optional Decorative Element */}
-        <div className="mt-10">
-          <svg
-            className="w-40 h-40 opacity-90"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            fill="white"
-          >
-            <rect x="244" y="361.124" width="24" height="84.784" />
-            <rect x="131.472" y="433.924" width="249.04" height="24" />
-            <rect y="54.076" width="512" height="315.04" />
-            <path
-              fill="Red"
-              d="M317.304,157.588h-15.896v-35.872c0-4.384-3.56-7.944-7.944-7.944h-74.832
-         c-4.384,0-7.944,3.56-7.944,7.944v35.872h-15.896v-35.872c0-13.144,10.696-23.84,23.84-23.84h74.832
-         c13.144,0,23.84,10.696,23.84,23.84V157.588z"
-            />
-            <path
-              fill="Red"
-              d="M164.616,148.276l-35.72,172.496H383.2l-35.72-172.496H164.616z"
-            />
-            <rect x="132.784" y="194.084" width="246.528" height="15.896" />
-          </svg>
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-black text-white selection:bg-red-500">
+      {/* LEFT SECTION: BRANDING & VISUAL */}
+      <div className="relative flex-1 md:flex flex-col justify-between p-12 overflow-hidden border-r border-white/10">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={SignupHero}
+            alt="Nova Workspace"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
         </div>
-      </div>
-      {/* RIGHT SECTION (FORM) */}
-      <div className="flex-1 flex justify-center items-center bg-gray-50">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-800 text-center">
-            Sign Up
+
+        {/* Top: Logo */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="relative z-10"
+        >
+          <Link
+            to="/"
+            className="text-2xl font-bold tracking-tighter italic flex items-center gap-2 group"
+          >
+            <ArrowLeftIcon className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            NOVA SHOP
+          </Link>
+        </motion.div>
+
+        {/* Bottom: Text - Visible on all screens, adjusted margins for mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="relative z-10 mt-12 md:mt-0"
+        >
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-4 leading-tight">
+            Join the <br />
+            <span className="text-white/40 italic font-light">
+              future of retail.
+            </span>
           </h2>
-          <p className="text-sm text-gray-500 text-center">
-            Welcome! Please enter fill the form to sign up.
+          <p className="hidden sm:block text-white/60 font-extralight max-w-sm leading-relaxed text-sm md:text-base">
+            Create an account to unlock exclusive drops and experience seamless
+            shopping.
           </p>
-              {/* Email Input */}
-            <div>
-              <label className=" block mb-2 text-sm font-medium text-gray-900">
-                Your email
-              </label>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className=" bg-gray-50 border border-e-black-600 text-gray-900 sm:text-sm rounded-lg
-                p-2.5 w-full block"
-                placeholder="name@company.com"
-              />
+        </motion.div>
+      </div>
+
+      {/* RIGHT SECTION: SIGNUP FORM */}
+      <div className="flex-1 flex flex-col justify-center items-center p-8 bg-black">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-full max-w-md space-y-8"
+        >
+          {/* Header */}
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl font-bold tracking-tight">
+              Create Account
+            </h1>
+            <p className="text-white/40 font-extralight mt-2">
+              Please fill in your details to start your journey.
+            </p>
+          </div>
+
+          {/* Form */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div>
+                <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl focus:outline-none focus:border-white transition-colors font-extralight placeholder:text-white/10"
+                  placeholder="name@email.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-white/40 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 px-4 py-3 rounded-xl focus:outline-none focus:border-white transition-colors font-extralight placeholder:text-white/10"
+                  placeholder="Minimum 6 characters"
+                />
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-red-500 text-xs mt-3 font-medium"
+                  >
+                    {error}
+                  </motion.p>
+                )}
+              </div>
             </div>
 
-            <div>
-              <label className=" block mb-2 text-sm font-medium text-gray-900">
-                Your password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className=" bg-gray-50 border border-e-black-600 text-gray-900 sm:text-sm rounded-lg
-                p-2.5 w-full block"
-                placeholder="password"
-              />
-            </div>
             <button
-              className=" w-full text-white bg-red-500 hover:bg-red-600 font-medium text-sm py-2.5 rounded-lg px-5 text-center  "
-              type="submit"
               onClick={register}
+              className="w-full bg-white text-black font-bold py-4 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 transform active:scale-[0.98]"
             >
-              Create an account
+              Initialize Account
             </button>
-            {error && <p className="text-red-600 mt-2 text-sm">{error}</p>}
-            <p>
-              {" "}
-              Already have an account?{" "}
+          </div>
+
+          {/* Bottom Link */}
+          <div className="text-center">
+            <p className="text-sm text-white/40 font-extralight">
+              Already a member?{" "}
               <Link
                 to="/Signin"
-                className=" font-medium text-primary-600 hover:underline text-red-600 "
+                className="text-white hover:text-red-500 font-bold transition-colors underline decoration-white/10 underline-offset-4"
               >
                 Login here
               </Link>
             </p>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Signup;

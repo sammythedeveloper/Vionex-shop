@@ -7,6 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import SignUp from "./Components/SignUp";
 import Signin from "./Components/Signin";
+import LandingPage from "./Components/LandingPage";
 import Checkout from "./Components/Checkout";
 import Payment from "./Components/Payment";
 import Orders from "./Components/Orders";
@@ -23,14 +24,12 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      console.log("🔥 Auth changed:", authUser);
       if (authUser) {
         dispatch({ type: "SET_USER", user: authUser });
       } else {
         dispatch({ type: "SET_USER", user: null });
       }
     });
-
     return unsubscribe;
   }, [dispatch]);
 
@@ -38,31 +37,51 @@ const App = () => {
     <Router basename={process.env.PUBLIC_URL}>
       <ScrollToTop />
       <Routes>
-        {/* Home */}
         <Route
           path="/"
           element={
-            <ProtectedRoute>
+            <div className="bg-black min-h-screen">
+              <LandingPage />
+              <Footer />
+            </div>
+          }
+        />
+
+        {/* --- PUBLIC SHOP ROUTES --- */}
+        <Route
+          path="/shop"
+          element={
+            <>
               <NavBar />
               <HomePage />
               <Footer />
-            </ProtectedRoute>
+            </>
           }
         />
 
-        {/* Category */}
         <Route
           path="/category/:category"
           element={
-            <ProtectedRoute>
+            <>
               <NavBar />
               <ProductPage />
               <Footer />
-            </ProtectedRoute>
+            </>
           }
         />
 
-        {/* Checkout */}
+        <Route
+          path="/Products"
+          element={
+            <>
+              <NavBar />
+              <Products />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* --- CHECKOUT & AUTH --- */}
         <Route
           path="/Checkout"
           element={
@@ -73,8 +92,6 @@ const App = () => {
             </>
           }
         />
-
-        {/* Sign up / Sign in */}
         <Route
           path="/SignUp"
           element={
@@ -94,40 +111,28 @@ const App = () => {
           }
         />
 
-        {/* Products */}
-        <Route
-          path="/Products"
-          element={
-            <>
-              <NavBar />
-              <Products />
-              <Footer />
-            </>
-          }
-        />
-
-        {/* Payment */}
+        {/* --- PROTECTED ROUTES --- */}
+        {/* Only logged-in users can reach these */}
         <Route
           path="/Payment"
           element={
-            <>
+            <ProtectedRoute>
               <NavBar />
               <Elements stripe={key}>
                 <Payment />
               </Elements>
               <Footer />
-            </>
+            </ProtectedRoute>
           }
         />
 
-        {/* Orders */}
         <Route
           path="/Orders"
           element={
-            <>
+            <ProtectedRoute>
               <NavBar />
               <Orders />
-            </>
+            </ProtectedRoute>
           }
         />
       </Routes>

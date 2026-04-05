@@ -1,66 +1,112 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa"; // Swapped FB for Insta for a techier vibe
 
 function Footer() {
   return (
-    <footer className="bg-black text-white mt-16">
-      <div className="max-w-[1600px] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer
+      id="contact-section"
+      className=" bg-black text-white pt-24 pb-12 border-t border-white/10"
+    >
+      <div className="max-w-[1600px] mx-auto px-10">
+        {/* Top Section: Brand & Newsletter */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+          {/* Brand Info */}
+          <div className="lg:col-span-4 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter">NOVA SHOP</h2>
+            <p className="text-white/50 font-extralight leading-relaxed max-w-sm">
+              Defining the future of digital lifestyle through curated hardware
+              and seamless shopping experiences.
+            </p>
+            <div className="flex space-x-6 text-white/40">
+              <a href="#" className="hover:text-white transition-colors">
+                <FaLinkedin size={20} />
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                <FaGithub size={20} />
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                <FaInstagram size={20} />
+              </a>
+            </div>
+          </div>
 
-        {/* Links Section */}
-        <div>
-          <h3 className="font-light text-2xl mb-4">Quick Links</h3>
-          <ul className="space-y-2 font-extralight text-md ">
-            <li><a href="#" className="hover:text-red-600">Shipping & Returns</a></li>
-            <li><a href="#" className="hover:text-red-600">Store Policy</a></li>
-            <li><a href="#" className="hover:text-red-600">Payment Methods</a></li>
-            <li><a href="#" className="hover:text-red-600">Contact</a></li>
-          </ul>
-        </div>
+          {/* Quick Links Grid */}
+          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/30 mb-6">
+                Support
+              </h3>
+              <ul className="space-y-4 font-extralight text-sm text-white/70">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Shipping & Returns
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Store Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Privacy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/30 mb-6">
+                Company
+              </h3>
+              <ul className="space-y-4 font-extralight text-sm text-white/70">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Journal
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        {/* Contact Section */}
-        <div>
-          <h3 className="font-light text-2xl mb-4">Contact Us</h3>
-          <p>Tel: <a href="tel:123-456-7890" className="hover:text-red-600">123-456-7890</a></p>
-          <p>Email: <a href="mailto:info@mysite.com" className="hover:text-red-600">info@mysite.com</a></p>
-          <div className="flex space-x-4 mt-4">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500"><FaLinkedin size={24} /></a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><FaGithub size={24} /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600"><FaFacebook size={24} /></a>
+          {/* Newsletter Section */}
+          <div className="lg:col-span-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/30 mb-6">
+              Stay Updated
+            </h3>
+            <form className="relative group">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-transparent border-b border-white/20 py-3 w-full outline-none focus:border-white transition-colors font-extralight text-lg"
+              />
+              <button
+                type="submit"
+                className="absolute right-0 bottom-3 text-sm uppercase tracking-widest font-bold hover:text-red-500 transition-colors"
+              >
+                Join
+              </button>
+            </form>
+            <p className="text-[10px] text-white/30 mt-4 uppercase tracking-widest">
+              <a href="#contact"></a>
+              By subscribing, you agree to our Terms.
+            </p>
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div>
-          <h3 className="font-light text-2xl mb-4">Join Our Mailing List</h3>
-          <p className="mb-2">Never miss an update!</p>
-          <form className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Email*"
-              className="px-4 py-2 border border-gray-300 rounded-md outline-none w-full"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 text-[10px] uppercase tracking-[0.2em] text-white/30 font-bold">
+          <p>&copy; 2025 Nova Shop. All rights reserved.</p>
         </div>
-
-      </div>
-
-      {/* Bottom */}
-      <div className="border-t border-gray-300 mt-8 py-4 text-center text-sm text-gray-500">
-        &copy; 2025 Nova Shop. Designed with ❤️ by{" "}
-        <a
-          href="https://github.com/yourgithub"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-red-500 hover:underline"
-        >
-          SamtheDev
-        </a>
       </div>
     </footer>
   );
